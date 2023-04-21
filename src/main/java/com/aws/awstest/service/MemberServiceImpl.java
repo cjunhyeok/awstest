@@ -18,6 +18,7 @@ public class MemberServiceImpl implements MemberService{
     private final PasswordEncoder passwordEncoder;
 
     @Override
+    @Transactional
     public Long join(String username, String password, String nickname) {
         Member savedMember = memberRepository.save(
                 Member.builder()
