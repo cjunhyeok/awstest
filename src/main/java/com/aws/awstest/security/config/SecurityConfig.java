@@ -22,6 +22,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests()
                 .requestMatchers("/").permitAll()
                 .requestMatchers("/login").permitAll()
+                .requestMatchers("/members/new").permitAll()
                 .anyRequest().authenticated();
         http.formLogin();
 
