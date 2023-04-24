@@ -14,6 +14,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -53,5 +54,17 @@ public class PostController {
         model.addAttribute("findAllPosts", findAllPosts);
         model.addAttribute("loginMember", member);
         return "posts/posts";
+    }
+
+    @GetMapping("/posts/{postId}")
+    public String post(@PathVariable(name = "postId") Long postId,
+                       @AuthenticationPrincipal Member member,
+                       Model model) {
+
+        Post findPost = postService.findById(postId);
+        model.addAttribute("post", findPost);
+        model.addAttribute("loginMember", member);
+
+        return "posts/post";
     }
 }
