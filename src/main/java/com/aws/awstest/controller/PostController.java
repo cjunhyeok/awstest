@@ -44,12 +44,14 @@ public class PostController {
     }
 
     @GetMapping("/posts")
-    public String posts(Model model, @PageableDefault(size = 10)Pageable pageable) {
+    public String posts(Model model, @PageableDefault(size = 10)Pageable pageable,
+                        @AuthenticationPrincipal Member member) {
 
         Page<Post> findAllPostsPage = postService.findAllPosts(pageable);
         List<Post> findAllPosts = findAllPostsPage.getContent();
 
         model.addAttribute("findAllPosts", findAllPosts);
+        model.addAttribute("loginMember", member);
         return "posts/posts";
     }
 }
