@@ -35,9 +35,10 @@
                     <td th:text="${post.id}"></td>
                     <td th:text="${post.title}"></td>
                     <td th:text="${post.member.nickname}"></td>
-                    <td th:text="${#dates.format(post.createdDate, 'yyyy-MM-dd HH:mm')}"></td>
+                    <td th:text="${#temporals.format(post.createdDate, 'yyyy-MM-dd HH:mm')}"></td>
                     <td>
-                        <a th:href="@{/posts/{id}/edit(id=${post.id})}" class="btn btn-primary btn-sm">수정</a>
+                        <a th:href="@{/posts/{id}/edit(id=${post.id})}" class="btn btn-primary btn-sm"
+                        th:if="${post.member.username == loginMember.username}">수정</a>
                     </td>
                 </tr>
                 </tbody>
