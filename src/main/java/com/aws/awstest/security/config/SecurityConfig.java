@@ -37,6 +37,10 @@ public class SecurityConfig {
                 .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/");
 
+        http.logout()
+                        .logoutUrl("/logout")
+                                .logoutSuccessUrl("/");
+
         http.userDetailsService(userDetailsService());
         http.authenticationProvider(authenticationProvider());
 
