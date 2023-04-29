@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:h2:tcp://host.docker.internal/~/test
-    username: sa
-    password:
+    url: jdbc:mysql://${endpoint}:${port}/${schema}
+    username: ${username}
+    password: ${password}
     driver-class-name: org.h2.Driver
   jpa:
     hibernate:
